@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categorized Music Player</title>
+  <link rel="shortcut icon" href="img/logo.jpeg" type="image/jpeg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .active {
+      background-color: #4ade80;
+      color: #1f2937;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-gray-800 rounded-xl shadow-xl w-full max-w-2xl p-6">
+    <h1 class="text-2xl font-bold text-center mb-6">🎧 Music Player</h1>
+
+    <div class="space-y-6">
+      <!-- Pop Music -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">🎤 Pop Music </h2>
+        <ul class="space-y-2">
+            
+          <li onclick="playTrack(this, 'pop1.mp3', 'Pop Anthem')" class="track bg-gray-700 p-3 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+            ▶️ Audio Track 1
+            <audio id="audioPlayer" class="w-full mb-4 mt-2" controls>
+              <source id="audioSource" src="music/audio.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+    </audio> 
+          </li>
+          <li onclick="playTrack(this, 'pop2.mp3', 'Lost in Universe')" class="track bg-gray-700 p-3 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+            ▶️ Lost in Universe
+            <audio id="audioPlayer" class="w-full mb-4 mt-2" controls>
+              <source id="audioSource" src="music/lost.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Country Music -->
+      <div>
+        <h2 class="text-xl font-semibold mb-2">🤠 Country Music</h2>
+        <ul class="space-y-2">
+          <li onclick="playTrack(this, 'country1.mp3', 'Country Roads')" class="track bg-gray-700 p-3 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+            ▶️ 🇹🇭 Thai 
+             <audio id="audioPlayer" class="w-full mb-4 mt-2" controls>
+              <source id="audioSource" src="music/thai.mp3" type="audio/mpeg" />
+            </audio>
+          </li>
+          <li onclick="playTrack(this, 'country2.mp3', 'Southern Nights')" class="track bg-gray-700 p-3 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+            ▶️ Tiitanic Solo Guitar
+             <audio id="audioPlayer" class="w-full mb-4 mt-2" controls>
+              <source id="audioSource" src="music/titanic.mp3" type="audio/mpeg" />
+            </audio>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p id="nowPlaying" class="mt-6 text-center text-sm text-gray-300">🎶 Select a track to begin</p>
+  </div>
+
+  <script>
+    function playTrack(element, file, title) {
+      const audio = document.getElementById('audioPlayer');
+      const source = document.getElementById('audioSource');
+      const nowPlaying = document.getElementById('nowPlaying');
+      const tracks = document.querySelectorAll('.track');
+
+      tracks.forEach(track => track.classList.remove('active'));
+      element.classList.add('active');
+
+      source.src = file;
+      audio.load();
+      audio.play();
+      nowPlaying.textContent = `🎶 Now Playing: ${title}`;
+    }
+  </script>
+
+</body>
+</html>
