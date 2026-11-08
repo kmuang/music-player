@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Guitar Solo cover with Khup Muang logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22213b"/>
+      <stop offset="1" stop-color="#10131a"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd084"/>
+      <stop offset=".52" stop-color="#e98a43"/>
+      <stop offset="1" stop-color="#a94735"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#b4f06a" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#b4f06a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-.4" y="-.3" width="1.8" height="1.8">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <rect width="600" height="600" rx="42" fill="url(#bg)"/>
+  <circle cx="385" cy="322" r="250" fill="url(#glow)"/>
+  <circle cx="451" cy="154" r="94" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
+  <circle cx="451" cy="154" r="128" fill="none" stroke="#fff" stroke-opacity=".05" stroke-width="2"/>
+  <g transform="rotate(18 330 338)" filter="url(#shadow)">
+    <path d="M307 115h45v232h-45z" rx="8" fill="#74452f" stroke="#ffd79d" stroke-opacity=".75" stroke-width="4"/>
+    <path d="M299 94q0-13 14-13h33q14 0 14 13v37h-61z" fill="#eaa05e" stroke="#ffd79d" stroke-width="4"/>
+    <path d="M306 336c-40-23-80 5-75 53-38 25-32 85 12 105 35 16 69-4 83-31 24 23 68 12 82-25 15-40-8-73-45-76-2-44-31-50-57-26z" fill="url(#wood)" stroke="#ffd79d" stroke-width="5"/>
+    <circle cx="330" cy="398" r="23" fill="#31211d" stroke="#ffdca8" stroke-width="5"/>
+    <circle cx="330" cy="398" r="8" fill="#b77943"/>
+    <path d="M326 120v297m7-297v297m7-297v297m7-297v297" fill="none" stroke="#fff0d4" stroke-opacity=".9" stroke-width="1.8"/>
+    <path d="M310 155h37m-37 27h37m-37 27h37m-37 27h37m-37 27h37m-37 27h37" stroke="#492d25" stroke-opacity=".7" stroke-width="4"/>
+  </g>
+  <rect x="38" y="38" width="104" height="104" rx="25" fill="#fff"/>
+  <image href="logo.jpeg" x="40" y="40" width="100" height="100" preserveAspectRatio="xMidYMid slice"/>
+  <text x="42" y="523" fill="#fff" font-family="Arial, sans-serif" font-size="39" font-weight="700" letter-spacing="-1">GUITAR SOLO</text>
+  <text x="44" y="558" fill="#b4f06a" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="4">KHUP MUANG</text>
+</svg>

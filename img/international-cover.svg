@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="International music cover with Earth and Khup Muang logo">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102947"/>
+      <stop offset="1" stop-color="#10151f"/>
+    </linearGradient>
+    <linearGradient id="ocean" x1=".15" y1="0" x2=".85" y2="1">
+      <stop offset="0" stop-color="#60d9ee"/>
+      <stop offset=".55" stop-color="#228bcc"/>
+      <stop offset="1" stop-color="#174e9c"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c4f07c"/>
+      <stop offset="1" stop-color="#47b989"/>
+    </linearGradient>
+    <filter id="shadow" x="-.4" y="-.4" width="1.8" height="1.8">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+    <clipPath id="planet"><circle cx="320" cy="298" r="174"/></clipPath>
+  </defs>
+  <rect width="600" height="600" rx="42" fill="url(#night)"/>
+  <circle cx="320" cy="298" r="220" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="2"/>
+  <circle cx="320" cy="298" r="202" fill="none" stroke="#b4f06a" stroke-opacity=".18" stroke-width="2"/>
+  <g filter="url(#shadow)">
+    <circle cx="320" cy="298" r="174" fill="url(#ocean)"/>
+    <g clip-path="url(#planet)" fill="url(#land)">
+      <path d="M180 174l31-22 30 8 13 19 29 7 10 22-17 17-5 28-22 17-6 29-22 17-16-12-3-31-18-12 4-24-18-21 10-18-14-24z"/>
+      <path d="M248 331l29-11 27 13 12 28-8 29-13 12-3 31-20 32-13-19 4-23-20-20-6-39-14-17z"/>
+      <path d="M335 174l24-15 30 6 14 18 38 5 12 22 34 5 8 19-24 10-8 24-24 5-8 27-26 4-13 19-27-4-14-24-29-12-3-23-22-12 8-28 25-15-3-30z"/>
+      <path d="M395 334l23-10 26 9 18 25-12 20-28 7-24-17-18-21z"/>
+      <path d="M287 138l13-22 20 8 10 18-14 12-19-4zM469 286l17-7 13 11-8 18-17 2z"/>
+    </g>
+    <circle cx="320" cy="298" r="174" fill="none" stroke="#e0fbff" stroke-opacity=".8" stroke-width="3"/>
+    <path d="M191 216c32-49 88-81 151-86" fill="none" stroke="#fff" stroke-opacity=".36" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <rect x="38" y="38" width="104" height="104" rx="25" fill="#fff"/>
+  <image href="logo.jpeg" x="40" y="40" width="100" height="100" preserveAspectRatio="xMidYMid slice"/>
+  <text x="42" y="523" fill="#fff" font-family="Arial, sans-serif" font-size="39" font-weight="700" letter-spacing="-1">INTERNATIONAL</text>
+  <text x="44" y="558" fill="#b4f06a" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="4">MUSIC AROUND THE WORLD</text>
+</svg>
