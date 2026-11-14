@@ -65,13 +65,30 @@ class MusicPlayer {
       this.analyser.fftSize = 128;
       this.analyser.smoothingTimeConstant = 0.8;
 
-      this.audio.crossOrigin = "anonymous";
       this.sourceNode = this.audioCtx.createMediaElementSource(this.audio);
       this.sourceNode.connect(this.analyser);
       this.analyser.connect(this.audioCtx.destination);
       this.isVisualizerInit = true;
     } catch (err) {
       console.warn('Web Audio API context could not be initialized:', err);
+    }
+  }
+
+  resolveAudioSrc(url) {
+    if (!url || /^(blob:|data:)/i.test(url)) return url;
+    try {
+      return encodeURI(url);
+    } catch {
+      return url;
+    }
+  }
+
+  isCrossOriginAudio(url) {
+    if (!url || /^(blob:|data:)/i.test(url)) return false;
+    try {
+      return new URL(url, window.location.href).origin !== window.location.origin;
+    } catch {
+      return false;
     }
   }
 
@@ -101,7 +118,11 @@ class MusicPlayer {
     }
 
     this.currentTrack = track;
-    this.audio.src = track.audioUrl;
+    const src = this.resolveAudioSrc(track.audioUrl);
+    // Same-origin files on GitHub Pages and Netlify do not send CORS headers.
+    // Asking for anonymous CORS makes those files fail even though the URL is valid.
+    this.audio.crossOrigin = this.isCrossOriginAudio(src) ? 'anonymous' : null;
+    this.audio.src = src;
     this.audio.load();
     
     const playPromise = this.audio.play();
