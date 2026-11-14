@@ -37,7 +37,10 @@ class MiniSpotifyApp {
     this.updateApiStatusUI();
     try {
       const savedTracks = await window.localLibrary.getAll();
-      savedTracks.forEach(saved => {
+      const catalogIds = new Set(window.spotifyAPI.localTracks.map(track => track.id));
+      const staleFolderTracks = savedTracks.filter(saved => this.isStaleFolderTrack(saved.id, catalogIds));
+      await Promise.all(staleFolderTracks.map(saved => window.localLibrary.deleteTrack(saved.id).catch(() => {})));
+      savedTracks.filter(saved => !this.isStaleFolderTrack(saved.id, catalogIds)).forEach(saved => {
         if (!saved.audioBlob) return;
         const audioUrl = URL.createObjectURL(saved.audioBlob);
         const existingTrack = window.spotifyAPI.localTracks.find(track => track.id === saved.id);
@@ -106,148 +109,94 @@ class MiniSpotifyApp {
     });
   }
 
-  ensureGuitarSoloPlaylist() {
-    const guitarTracks = window.spotifyAPI.localTracks.filter(track => track.category === 'Guitar');
-    if (!guitarTracks.length) return;
+  isStaleFolderTrack(id, catalogIds) {
+    const prefixes = ['guitar-folder-', 'international-folder-', 'zomi-', 'myanmar-', 'gospel-', 'library-'];
+    return prefixes.some(prefix => id.startsWith(prefix)) && !catalogIds.has(id);
+  }
 
-    let playlist = this.userPlaylists.find(item => item.id === 'user-pl-guitar-solo');
+  syncBundledPlaylist({ id, name, description, cover, tracks }) {
+    const existingIndex = this.userPlaylists.findIndex(item => item.id === id);
+    const curatedIndex = window.spotifyAPI.curatedPlaylists.findIndex(item => item.id === id);
+
+    if (!tracks.length) {
+      if (existingIndex >= 0) this.userPlaylists.splice(existingIndex, 1);
+      if (curatedIndex >= 0) window.spotifyAPI.curatedPlaylists.splice(curatedIndex, 1);
+      localStorage.setItem('mini_spotify_user_playlists', JSON.stringify(this.userPlaylists));
+      return;
+    }
+
+    let playlist = existingIndex >= 0 ? this.userPlaylists[existingIndex] : null;
     if (!playlist) {
-      playlist = {
-        id: 'user-pl-guitar-solo',
-        name: 'Guitar Solo',
-        description: 'Guitar tracks from your local music collection.',
-        cover: 'img/logo.jpeg',
-        trackIds: []
-      };
+      playlist = { id, name, description, cover, trackIds: [] };
       this.userPlaylists.push(playlist);
+      window.spotifyAPI.curatedPlaylists.push(playlist);
+    } else if (curatedIndex < 0) {
       window.spotifyAPI.curatedPlaylists.push(playlist);
     }
 
-    if (!playlist.customArtwork) playlist.cover = 'img/guitar-solo-cover.svg';
-    const trackIds = new Set(playlist.trackIds || []);
-    guitarTracks.forEach(track => trackIds.add(track.id));
-    playlist.trackIds = Array.from(trackIds);
+    if (!playlist.customArtwork) playlist.cover = cover;
+    playlist.trackIds = tracks.map(track => track.id);
     localStorage.setItem('mini_spotify_user_playlists', JSON.stringify(this.userPlaylists));
+  }
+
+  ensureGuitarSoloPlaylist() {
+    this.syncBundledPlaylist({
+      id: 'user-pl-guitar-solo',
+      name: 'Guitar Solo',
+      description: 'Guitar tracks from your local music collection.',
+      cover: 'img/guitar-solo-cover.svg',
+      tracks: window.spotifyAPI.localTracks.filter(track => track.category === 'Guitar')
+    });
   }
 
   ensureInternationalPlaylist() {
-    const tracks = window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'international');
-    if (!tracks.length) return;
-
-    let playlist = this.userPlaylists.find(item => item.id === 'user-pl-international');
-    if (!playlist) {
-      playlist = {
-        id: 'user-pl-international',
-        name: 'International',
-        description: 'Tracks from your international music folder.',
-        cover: 'img/logo.jpeg',
-        trackIds: []
-      };
-      this.userPlaylists.push(playlist);
-      window.spotifyAPI.curatedPlaylists.push(playlist);
-    }
-
-    if (!playlist.customArtwork) playlist.cover = 'img/international-cover.svg';
-    const trackIds = new Set(playlist.trackIds || []);
-    tracks.forEach(track => trackIds.add(track.id));
-    playlist.trackIds = Array.from(trackIds);
-    localStorage.setItem('mini_spotify_user_playlists', JSON.stringify(this.userPlaylists));
+    this.syncBundledPlaylist({
+      id: 'user-pl-international',
+      name: 'International',
+      description: 'Tracks from your international music folder.',
+      cover: 'img/international-cover.svg',
+      tracks: window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'international')
+    });
   }
 
   ensureZomiPlaylist() {
-    const tracks = window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'zomi');
-    if (!tracks.length) return;
-
-    let playlist = this.userPlaylists.find(item => item.id === 'user-pl-zomi');
-    if (!playlist) {
-      playlist = {
-        id: 'user-pl-zomi',
-        name: 'Zomi',
-        description: 'Songs from your Zomi music folder.',
-        cover: 'img/logo.jpeg',
-        trackIds: []
-      };
-      this.userPlaylists.push(playlist);
-      window.spotifyAPI.curatedPlaylists.push(playlist);
-    }
-
-    if (!playlist.customArtwork) playlist.cover = 'img/zomi-cover.svg';
-    const trackIds = new Set(playlist.trackIds || []);
-    tracks.forEach(track => trackIds.add(track.id));
-    playlist.trackIds = Array.from(trackIds);
-    localStorage.setItem('mini_spotify_user_playlists', JSON.stringify(this.userPlaylists));
+    this.syncBundledPlaylist({
+      id: 'user-pl-zomi',
+      name: 'Zomi',
+      description: 'Songs from your Zomi music folder.',
+      cover: 'img/zomi-cover.svg',
+      tracks: window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'zomi')
+    });
   }
 
   ensureMyanmarPlaylist() {
-    const tracks = window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'myanmar');
-    if (!tracks.length) return;
-
-    let playlist = this.userPlaylists.find(item => item.id === 'user-pl-myanmar');
-    if (!playlist) {
-      playlist = {
-        id: 'user-pl-myanmar',
-        name: 'Myanmar',
-        description: 'Songs from your Myanmar music folder.',
-        cover: 'img/logo.jpeg',
-        trackIds: []
-      };
-      this.userPlaylists.push(playlist);
-      window.spotifyAPI.curatedPlaylists.push(playlist);
-    }
-
-    if (!playlist.customArtwork) playlist.cover = 'img/myanmar-cover.svg';
-    const trackIds = new Set(playlist.trackIds || []);
-    tracks.forEach(track => trackIds.add(track.id));
-    playlist.trackIds = Array.from(trackIds);
-    localStorage.setItem('mini_spotify_user_playlists', JSON.stringify(this.userPlaylists));
+    this.syncBundledPlaylist({
+      id: 'user-pl-myanmar',
+      name: 'Myanmar',
+      description: 'Songs from your Myanmar music folder.',
+      cover: 'img/myanmar-cover.svg',
+      tracks: window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'myanmar')
+    });
   }
 
   ensureGospelPlaylist() {
-    const tracks = window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'gospel');
-    if (!tracks.length) return;
-
-    let playlist = this.userPlaylists.find(item => item.id === 'user-pl-gospel');
-    if (!playlist) {
-      playlist = {
-        id: 'user-pl-gospel',
-        name: 'Gospel',
-        description: 'Songs from your Gospel music folder.',
-        cover: 'img/logo.jpeg',
-        trackIds: []
-      };
-      this.userPlaylists.push(playlist);
-      window.spotifyAPI.curatedPlaylists.push(playlist);
-    }
-
-    if (!playlist.customArtwork) playlist.cover = 'img/gospel-cover.svg';
-    const trackIds = new Set(playlist.trackIds || []);
-    tracks.forEach(track => trackIds.add(track.id));
-    playlist.trackIds = Array.from(trackIds);
-    localStorage.setItem('mini_spotify_user_playlists', JSON.stringify(this.userPlaylists));
+    this.syncBundledPlaylist({
+      id: 'user-pl-gospel',
+      name: 'Gospel',
+      description: 'Songs from your Gospel music folder.',
+      cover: 'img/gospel-cover.svg',
+      tracks: window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'gospel')
+    });
   }
 
   ensureLibraryPlaylist() {
-    const tracks = window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'library');
-    if (!tracks.length) return;
-
-    let playlist = this.userPlaylists.find(item => item.id === 'user-pl-library');
-    if (!playlist) {
-      playlist = {
-        id: 'user-pl-library',
-        name: 'Library',
-        description: 'Songs from your music library folder.',
-        cover: 'img/library-cover.svg',
-        trackIds: []
-      };
-      this.userPlaylists.push(playlist);
-      window.spotifyAPI.curatedPlaylists.push(playlist);
-    }
-
-    if (!playlist.customArtwork) playlist.cover = 'img/library-cover.svg';
-    const trackIds = new Set(playlist.trackIds || []);
-    tracks.forEach(track => trackIds.add(track.id));
-    playlist.trackIds = Array.from(trackIds);
-    localStorage.setItem('mini_spotify_user_playlists', JSON.stringify(this.userPlaylists));
+    this.syncBundledPlaylist({
+      id: 'user-pl-library',
+      name: 'Library',
+      description: 'Songs from your music library folder.',
+      cover: 'img/library-cover.svg',
+      tracks: window.spotifyAPI.localTracks.filter(track => track.bundleCollection === 'library')
+    });
   }
 
   async cacheBundledTracks() {
