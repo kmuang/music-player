@@ -73,10 +73,6 @@ class SpotifyAPI {
         cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🕰️🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
-        id: 'guitar-folder-8', title: 'Guitar Solo — Theater', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🎭🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
-      },
-      {
         id: 'international-folder-1', title: 'International — France', artist: 'Khup Muang', album: 'International Collection', duration: 0,
         cover: 'img/logo.jpeg', audioUrl: 'music/international/🇫🇷.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
@@ -111,13 +107,9 @@ class SpotifyAPI {
     ];
 
     const zomiSongs = [
-      'bel-sek-pa', 'ciam-pel-lo-itna', 'ciam-pel-lo', 'esther-sian', 'hello-zomi', 'hong-suak',
+      'bel-sek-pa', 'ciam-pel-lo', 'ciam-pel-lo-itna', 'esther-sian', 'hello-zomi', 'hong-suak',
       'inn', 'izomi-dreamer', 'izomi-kalaymyo', 'izomi-return', 'izomi-situation', 'kaa-lungsak',
-      'kamseem', 'kan-ngai', 'kei-kiang-om', 'kei-nang-a-hi', 'ken-thei-ing', 'kimudah',
-      'kisai-sai', 'kong-it', 'mamawhchan', 'na-tangthu-ding', 'nang-a-kahi', 'nang-kong',
-      'nang-ma-thu', 'nang-na-hoih', 'nang-na-lian-hi', 'ngun-no', 'pian-na-vang', 'sawt-nawt-lo',
-      'sian-gawm', 'taapi', 'taitampi', 'thangho-liando', 'tong-ciam', 'tuhun-zomi', 'tungpu-edu',
-      'zeisu-sisan', 'zogam-aw', 'zogam-zolei', 'zolianu', 'zotawi-lia-nu'
+      'kamseem', 'kan-ngai'
     ];
     this.localTracks.push(...zomiSongs.map(filename => ({
       id: `zomi-${filename}`,
@@ -134,11 +126,7 @@ class SpotifyAPI {
 
     const myanmarSongs = [
       '360mins', 'alwan', 'awyatha-ayethin', 'awyatha1', 'awyatha2', 'awyatha3', 'awyatha4',
-      'bawa-ta-gway', 'best-of-melody', 'bo-phyu', 'bunny-phyo', 'crush', 'friend', 'graham',
-      'jewel', 'kalay-yal', 'kalayyal', 'kaungmalay', 'koyantaw', 'lost-universe', 'maung-chithu',
-      'mm-malay', 'monalisa', 'monkey', 'n-kai-ra', 'n-neh-sr', 'nout-sone-yin', 'phyopyaesone',
-      'saw-lah', 'simple', 'taa-sis', 'taa-sis2', 'tain-twe', 'tanta', 'true-love', 'wana',
-      'wine+myogi', 'winesu+rzani', 'winewine'
+      'bawa-ta-gway', 'best-of-melody', 'bo-phyu', 'bunny-phyo', 'crush'
     ];
     this.localTracks.push(...myanmarSongs.map(filename => ({
       id: `myanmar-${filename}`,
@@ -153,35 +141,10 @@ class SpotifyAPI {
       category: 'Myanmar'
     })));
 
-    const gospelSongs = [
-      'a-kong-sone', 'alleluia', 'dance', 'dlay-umya', 'joja-cindy', 'kanlet',
-      'karani-lan', 'saa', 'saw-lwin', '🇲🇲 🇲🇲', '🇲🇲'
-    ];
-    this.localTracks.push(...gospelSongs.map((filename, index) => ({
-      id: `gospel-${index + 1}`,
-      title: filename.startsWith('🇲🇲')
-        ? `Gospel — Myanmar Hymn ${filename.includes(' ') ? '2' : '1'}`
-        : filename.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
-      artist: 'Khup Muang',
-      album: 'Gospel Collection',
-      duration: 0,
-      cover: 'img/logo.jpeg',
-      audioUrl: `music/gospel/${filename}.mp3`,
-      isLocal: true,
-      bundleCollection: 'gospel',
-      category: 'Gospel'
-    })));
-
     const librarySongs = [
       '10sec', 'a-mone-pin', 'achit-loh-call', 'adam-eve', 'all-i-ever-need', 'chan-kae',
       'cherry-thin', 'cyclone', 'for-the-rest', 'hitungah-cinta', 'izomi-eikibanglo', 'ka-pa-khuma',
-      'kaung-kaung', 'khawl-nuam-den', 'khen-thei-lo-maimit', 'khuanu-ruatloh', 'ko-ana', 'kway-par-sei',
-      'kyo-me-sun', 'lau-kha-siangtho', 'lei-thei-hilo', 'maapang-khawm', 'mang-pha', 'mangpi',
-      'mawk-a-siam', 'nang-lo-in', 'nang-lo', 'nang-sin-thu', 'ngaih-ang-lai', 'nihgeel-itna',
-      'nim-na-dildial', 'nui-lel-in', 'pan-sim-pho', 'pyan-lar-chin', 'pyan-lar-khae', 'r-za-ni',
-      'romeo', 'sian-gawm-loh', 'st.mary-culture', 'st.mary-group', 'st.mary-trio', 'takhar-pwint',
-      'tasein', 'thelnah', 'thu-ngel-chin', 'tiktok-short', 'tiktok-song', 'tun-leh-zua', 'unity',
-      'vang-ngaih-ng-toh', 'worldisOurs', 'ye-mye-char', 'zua-aw-na-lau-kha'
+      'kang-malay'
     ];
     this.localTracks.push(...librarySongs.map(filename => ({
       id: `library-${filename}`,
@@ -249,7 +212,7 @@ class SpotifyAPI {
         album: '÷ (Divide)',
         duration: 233,
         cover: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&auto=format&fit=crop&q=80',
-        audioUrl: 'music/audio.mp3',
+        audioUrl: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=electronic-future-beats-117997.mp3',
         category: 'Pop',
         spotifyUrl: 'https://open.spotify.com/track/7qiZfU4dY1lWllzX7mPBI3'
       },
@@ -416,7 +379,6 @@ class SpotifyAPI {
 
   getRandomAudioFallback() {
     const audioPool = [
-      'music/audio.mp3',
       'music/lost.mp3',
       'music/thai.mp3',
       'music/titanic.mp3',
