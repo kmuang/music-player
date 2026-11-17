@@ -19,23 +19,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 The port defaults to `3000`. Set `PORT` in `.env` to use another port.
 
-## Spotify search
-
-Spotify search is optional.
-
-1. Create an app at [https://developer.spotify.com/dashboard](https://developer.spotify.com/dashboard).
-2. Copy `.env.example` to `.env`.
-3. Replace the values with your own Client ID and Client Secret.
-
-```bash
-SPOTIFY_CLIENT_ID=your_client_id
-SPOTIFY_CLIENT_SECRET=your_client_secret
-PORT=3000
-```
-
-`.env` is listed in `.gitignore`. Do not commit it. Restart the server after changing it. The status check is `GET /api/spotify/status`. Search requests go to `/api/spotify/*`, and the server attaches the Spotify token.
-
-On GitHub Pages or Netlify there is no Node server, so Spotify search stays in demo mode. Local playback still works.
 
 ## What you can do in the app
 
