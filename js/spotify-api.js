@@ -15,94 +15,97 @@ class SpotifyAPI {
         id: 'local-2',
         title: 'Lost in Universe',
         artist: 'Khup Muang',
-        album: 'Cosmic Horizons',
+        album: 'Library Collection',
         duration: 165,
-        cover: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80',
-        audioUrl: 'music/lost.mp3',
+        cover: 'img/logo.jpeg',
+        audioUrl: 'music/library/lost.mp3',
         isLocal: true,
-        category: 'Chill'
+        bundleCollection: 'library',
+        category: 'Library'
       },
       {
         id: 'local-3',
         title: 'Thai Melody',
         artist: 'Khup Muang',
-        album: 'World & Folk Strings',
+        album: 'Library Collection',
         duration: 215,
-        cover: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&auto=format&fit=crop&q=80',
-        audioUrl: 'music/thai.mp3',
+        cover: 'img/logo.jpeg',
+        audioUrl: 'music/library/thai.mp3',
         isLocal: true,
-        category: 'Acoustic'
+        bundleCollection: 'library',
+        category: 'Library'
       },
       {
         id: 'local-4',
         title: 'Titanic Solo Guitar',
         artist: 'Khup Muang',
-        album: 'Cinema Guitar Solos',
+        album: 'Library Collection',
         duration: 198,
         cover: 'img/logo.jpeg',
-        audioUrl: 'music/titanic.mp3',
+        audioUrl: 'music/library/titanic.mp3',
         isLocal: true,
-        category: 'Guitar'
+        bundleCollection: 'library',
+        category: 'Library'
       },
       {
         id: 'guitar-folder-1', title: 'Guitar Solo — Music Note', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🎶🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
+        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/music-note.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
         id: 'guitar-folder-2', title: 'Guitar Solo — Headphones', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🎧 🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
+        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/headphones.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
         id: 'guitar-folder-3', title: 'Guitar Solo — Blue Heart', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🩵🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
+        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/blue-heart.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
         id: 'guitar-folder-4', title: 'Guitar Solo — Island', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🏝️ 🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
+        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/island.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
         id: 'guitar-folder-5', title: 'Guitar Solo — Dynamite', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/💣🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
+        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/dynamite.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
         id: 'guitar-folder-6', title: 'Guitar Solo — Ship', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🚢 🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
+        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/ship.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
         id: 'guitar-folder-7', title: 'Guitar Solo — Time', artist: 'Khup Muang', album: 'Guitar Solo Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/🕰️🎸.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
+        cover: 'img/logo.jpeg', audioUrl: 'music/guitar-solo/time.mp3', isLocal: true, isBundledMusic: true, category: 'Guitar'
       },
       {
         id: 'international-folder-1', title: 'International — France', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🇫🇷.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/france.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
       {
         id: 'international-folder-2', title: 'International — Malaysia', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🇲🇾.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/malaysia.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
       {
         id: 'international-folder-3', title: 'International — Netherlands', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🇳🇱.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/netherlands.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
       {
         id: 'international-folder-4', title: 'International — Norway', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🇳🇴.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/norway.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
       {
         id: 'international-folder-5', title: 'International — Norway 2', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🇳🇴2.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/norway-2.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
       {
         id: 'international-folder-6', title: 'International — Thailand', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🇹🇭.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/thailand.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
       {
         id: 'international-folder-7', title: 'International — Global', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🌍.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/global.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       },
       {
         id: 'international-folder-8', title: 'International — Mystery', artist: 'Khup Muang', album: 'International Collection', duration: 0,
-        cover: 'img/logo.jpeg', audioUrl: 'music/international/🦠.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
+        cover: 'img/logo.jpeg', audioUrl: 'music/international/mystery.mp3', isLocal: true, isBundledMusic: true, bundleCollection: 'international', category: 'International'
       }
     ];
 
@@ -144,7 +147,13 @@ class SpotifyAPI {
     const librarySongs = [
       '10sec', 'a-mone-pin', 'achit-loh-call', 'adam-eve', 'all-i-ever-need', 'chan-kae',
       'cherry-thin', 'cyclone', 'for-the-rest', 'hitungah-cinta', 'izomi-eikibanglo', 'ka-pa-khuma',
-      'kang-malay'
+      'kang-malay', 'kaung-kaung', 'khawl-nuam-den', 'khen-thei-lo-maimit', 'khuanu-ruatloh', 'ko-ana',
+      'kway-par-sei', 'kyo-me-sun', 'lau-kha-siangtho', 'lei-thei-hilo', 'maapang-khawm', 'mang-pha',
+      'mangpi', 'mawk-a-siam', 'nang-lo-in', 'nang-lo', 'nang-sin-thu', 'ngaih-ang-lai', 'nihgeel-itna',
+      'nim-na-dildial', 'nui-lel-in', 'pan-sim-pho', 'phephe-taduh', 'pyan-lar-chin', 'pyan-lar-khae',
+      'r-za-ni', 'romeo', 'sian-gawm-loh', 'st.mary-culture', 'st.mary-group', 'st.mary-trio', 'thelnah',
+      'tiktok-short', 'tiktok-song', 'tun-leh-zua', 'unity', 'vang-ngaih-ng-toh', 'worldisOurs',
+      'ye-mye-char', 'zua-aw-na-lau-kha'
     ];
     this.localTracks.push(...librarySongs.map(filename => ({
       id: `library-${filename}`,
@@ -201,7 +210,7 @@ class SpotifyAPI {
         album: 'FOUR',
         duration: 226,
         cover: 'https://images.unsplash.com/photo-1445985543469-433ecdd62977?w=500&auto=format&fit=crop&q=80',
-        audioUrl: 'music/titanic.mp3',
+        audioUrl: 'music/library/titanic.mp3',
         category: 'Acoustic',
         spotifyUrl: 'https://open.spotify.com/track/5O2P9iiztwhom9neueqw77'
       },
@@ -234,7 +243,7 @@ class SpotifyAPI {
         album: 'Spider-Man: Into the Spider-Verse',
         duration: 158,
         cover: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500&auto=format&fit=crop&q=80',
-        audioUrl: 'music/lost.mp3',
+        audioUrl: 'music/library/lost.mp3',
         category: 'Hip-Hop',
         spotifyUrl: 'https://open.spotify.com/track/3KkXRkHbMCARz0aVfEt68P'
       }
@@ -379,9 +388,9 @@ class SpotifyAPI {
 
   getRandomAudioFallback() {
     const audioPool = [
-      'music/lost.mp3',
-      'music/thai.mp3',
-      'music/titanic.mp3',
+      'music/library/lost.mp3',
+      'music/library/thai.mp3',
+      'music/library/titanic.mp3',
       'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=electronic-future-beats-117997.mp3',
       'https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3'
     ];
